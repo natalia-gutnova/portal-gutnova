@@ -21,12 +21,12 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #F0F4F8; min-heig
 .container { padding: 24px 16px 32px; max-width: 420px; margin: 0 auto; }
 .card { background: white; border-radius: 16px; padding: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); margin-bottom: 12px; }
 .input-label { font-size: 13px; color: #5B7A93; font-weight: 600; margin-bottom: 8px; display: block; }
-input[type=text] {
+input[type=text], input[type=date], input[type=number], select {
   width: 100%; padding: 13px 16px; border: 1.5px solid #C5D8E8;
-  border-radius: 12px; font-size: 16px; color: #1F3A52; outline: none;
-  transition: border 0.2s; margin-bottom: 12px;
+  border-radius: 12px; font-size: 15px; color: #1F3A52; outline: none;
+  transition: border 0.2s; margin-bottom: 12px; background: white;
 }
-input[type=text]:focus { border-color: #5BB8D4; }
+input:focus, select:focus { border-color: #5BB8D4; }
 .btn-primary {
   width: 100%; padding: 14px; border: none; border-radius: 12px;
   font-size: 16px; font-weight: 700; color: white;
@@ -43,17 +43,12 @@ input[type=text]:focus { border-color: #5BB8D4; }
 .spinner-text { font-size: 14px; color: #5B7A93; }
 .saludo { font-size: 20px; font-weight: 700; color: #1F3A52; text-align: center; margin-bottom: 6px; }
 .saludo-sub { font-size: 13px; color: #95B0C5; text-align: center; margin-bottom: 16px; }
-
-/* DEUDA CARD */
 .deuda-wrap { margin-bottom: 12px; }
 .deuda-header { background: #F0F4F8; border-radius: 12px 12px 0 0; padding: 10px 16px; }
 .deuda-banco { font-size: 14px; font-weight: 700; color: #1F3A52; }
-
-/* OPCION SELECCIONABLE */
 .opcion {
   border: 1.5px solid #E5EDF2; background: white;
   padding: 14px 16px; cursor: pointer; transition: all 0.2s;
-  position: relative;
 }
 .opcion:last-child { border-radius: 0 0 12px 12px; }
 .opcion:not(:last-child) { border-bottom: none; }
@@ -76,17 +71,6 @@ input[type=text]:focus { border-color: #5BB8D4; }
   float: right; background: #E74C3C; color: white;
   font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 20px;
 }
-.tag-wrap { text-align: center; margin: 4px 0 6px 28px; }
-.tag {
-  display: inline-block; background: #E74C3C; color: white;
-  font-size: 20px; font-weight: 900; padding: 6px 14px; border-radius: 8px;
-  position: relative; transform: rotate(-2deg); box-shadow: 0 3px 8px rgba(231,76,60,0.4);
-}
-.tag::before {
-  content: ''; position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
-  width: 10px; height: 10px; background: white; border-radius: 50%; border: 2px solid #E74C3C;
-}
-.tag small { font-size: 11px; font-weight: 700; display: block; }
 .row-montos { display: flex; gap: 8px; margin: 8px 0 4px 0; }
 .monto-antes { flex:1; text-align:center; padding:6px; border:1.5px solid #C5D8E8; border-radius:8px; font-size:11px; color:#5B7A93; }
 .monto-ahorro { flex:1; text-align:center; padding:6px; border:1.5px solid #27AE60; border-radius:8px; font-size:11px; color:#27AE60; font-weight:600; }
@@ -95,8 +79,8 @@ input[type=text]:focus { border-color: #5BB8D4; }
 .contador { font-size: 20px; font-weight: 900; color: #E74C3C; }
 .cuotas-selector { margin: 10px 0 0 28px; display: none; }
 .cuotas-titulo { font-size: 12px; color: #5B7A93; margin-bottom: 6px; }
-.cuotas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 8px; }
-.cuotas-grid-1 { display: grid; grid-template-columns: 1fr; gap: 6px; margin-bottom: 8px; }
+.cuotas-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 8px; }
+.cuotas-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 8px; }
 .cuota-btn {
   padding: 8px 4px; font-size: 12px; font-weight: 600;
   border: 1.5px solid #C5D8E8; border-radius: 8px;
@@ -105,8 +89,6 @@ input[type=text]:focus { border-color: #5BB8D4; }
 .cuota-btn.selected { background: #EBF5FA; color: #2E6E8E; border-color: #2E6E8E; }
 .cuota-resultado { font-size: 16px; font-weight: 700; color: #1F3A52; }
 .cuota-resultado-sub { font-size: 11px; color: #95B0C5; }
-
-/* BOTON CONFIRMAR */
 .btn-confirmar {
   width: 100%; padding: 14px; border: none; border-radius: 12px;
   font-size: 16px; font-weight: 700; color: white;
@@ -117,15 +99,11 @@ input[type=text]:focus { border-color: #5BB8D4; }
   width: 100%; padding: 11px; border: 1.5px solid #C5D8E8; border-radius: 12px;
   font-size: 13px; color: #1F3A52; background: white; cursor: pointer; margin-bottom: 8px;
 }
-
-/* DATOS PAGO */
 .pago-box { background: #F0F8FC; border: 1px solid #C5D8E8; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
 .pago-box-pf { background: #FFF5F5; border: 1px solid #F5C6C6; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
 .pago-label { font-size: 11px; color: #7A9BB5; margin-bottom: 8px; font-weight: 700; text-transform: uppercase; }
 .pago-row { font-size: 13px; color: #1F3A52; margin-bottom: 4px; }
 .pago-row span { font-weight: 700; }
-
-/* CONFIRMACION */
 .check-wrap { text-align: center; margin: 8px 0 12px; }
 .check-icon { font-size: 46px; color: #27AE60; }
 .confirm-title { font-size: 19px; font-weight: 700; color: #1F3A52; text-align: center; margin-bottom: 6px; }
@@ -138,6 +116,8 @@ input[type=text]:focus { border-color: #5BB8D4; }
 .btn-volver { width: 100%; background: none; border: none; color: #95B0C5; font-size: 13px; cursor: pointer; padding: 6px; }
 .divider { border: none; border-top: 1px solid #E5EDF2; margin: 12px 0; }
 .hidden { display: none; }
+.form-title { font-size: 16px; font-weight: 700; color: #1F3A52; margin-bottom: 4px; }
+.form-sub { font-size: 12px; color: #95B0C5; margin-bottom: 16px; }
 </style>
 </head>
 <body>
@@ -149,7 +129,6 @@ input[type=text]:focus { border-color: #5BB8D4; }
 
 <div class="container">
 
-  <!-- LOGIN -->
   <div class="card" id="login-view">
     <label class="input-label" for="dni-input">Ingresá tu DNI para ver tu propuesta</label>
     <input type="text" id="dni-input" placeholder="Ej: 28058139" maxlength="8">
@@ -157,7 +136,6 @@ input[type=text]:focus { border-color: #5BB8D4; }
     <p id="error-msg" class="error-msg">DNI no encontrado. Verificá el número e intentá de nuevo.</p>
   </div>
 
-  <!-- LOADING -->
   <div class="card hidden" id="loading-view">
     <div class="spinner-wrap">
       <div class="spinner"></div>
@@ -165,7 +143,6 @@ input[type=text]:focus { border-color: #5BB8D4; }
     </div>
   </div>
 
-  <!-- RESULTADO -->
   <div id="result-view" class="hidden">
     <p class="saludo" id="saludo">Hola</p>
     <p class="saludo-sub">Elegí cómo querés resolver tu deuda</p>
@@ -173,21 +150,53 @@ input[type=text]:focus { border-color: #5BB8D4; }
     <button class="btn-confirmar" id="btn-confirmar" onclick="confirmarPlan()">Confirmar esta opción</button>
     <div class="card">
       <button class="btn-otros" onclick="mostrarDatosPago()">&#10067; Otros medios de pago</button>
-      <button class="btn-ya-pague" onclick="alert('Gracias. Verificaremos tu pago en breve.')">&#10003; Ya pagué</button>
-      <button class="btn-despues" onclick="volver()">&#128197; Puedo pagar después</button>
+      <button class="btn-ya-pague" onclick="mostrarYaPague()">&#10003; Ya pagué</button>
+      <button class="btn-despues" onclick="mostrarPagarDespues()">&#128197; Puedo pagar después</button>
     </div>
   </div>
 
-  <!-- DATOS DE PAGO -->
   <div id="pago-view" class="hidden">
     <div class="card" id="pago-contenido"></div>
   </div>
 
-  <!-- CONFIRMACION -->
+  <!-- YA PAGUE -->
+  <div id="ya-pague-view" class="hidden">
+    <div class="card">
+      <p class="form-title">&#10003; Ya pagué</p>
+      <p class="form-sub">Completá los datos y te contactamos para confirmar</p>
+      <label class="input-label">Fecha del pago</label>
+      <input type="date" id="fecha-pago">
+      <label class="input-label">Importe pagado</label>
+      <input type="number" id="importe-pago" placeholder="Ej: 110000">
+      <label class="input-label">Medio de pago</label>
+      <select id="medio-pago">
+        <option value="">Seleccioná...</option>
+        <option value="Transferencia bancaria">Transferencia bancaria</option>
+        <option value="Pago Fácil">Pago Fácil</option>
+        <option value="Rapipago">Rapipago</option>
+        <option value="Depósito bancario">Depósito bancario</option>
+      </select>
+      <a id="btn-enviar-comprobante" href="#" target="_blank" class="btn-whatsapp" onclick="armarMensajePago()">&#128172; Enviar comprobante por WhatsApp</a>
+      <button class="btn-volver" onclick="volverAResultado()">Volver</button>
+    </div>
+  </div>
+
+  <!-- PAGAR DESPUES -->
+  <div id="pagar-despues-view" class="hidden">
+    <div class="card">
+      <p class="form-title">&#128197; Puedo pagar después</p>
+      <p class="form-sub">Elegí una fecha y te recordamos tu compromiso</p>
+      <label class="input-label">¿Para cuándo podés pagar?</label>
+      <input type="date" id="fecha-compromiso">
+      <button class="btn-primary" onclick="confirmarCompromiso()">Confirmar fecha</button>
+      <button class="btn-volver" onclick="volverAResultado()">Volver</button>
+    </div>
+  </div>
+
   <div id="confirm-view" class="hidden">
     <div class="card">
       <div class="check-wrap"><div class="check-icon">&#10003;</div></div>
-      <p class="confirm-title">Plan confirmado</p>
+      <p class="confirm-title" id="confirm-titulo">Plan confirmado</p>
       <p class="confirm-resumen" id="resumen-confirmado"></p>
       <div id="confirm-pago-box"></div>
       <a id="whatsapp-link" href="#" target="_blank" class="btn-whatsapp">&#128172; Avisar por WhatsApp</a>
@@ -200,8 +209,10 @@ input[type=text]:focus { border-color: #5BB8D4; }
 <script>
 var URL_SCRIPT = 'https://script.google.com/macros/s/AKfycbwbtAlsuKU7Uz_peAO-QVMPyDAW2Ypu6jebMQGTANvM1LVPJNdE8GxMfIEKyNtORyTisw/exec';
 var todasDeudas = [];
-var seleccion = null; // {deudaIdx, tipo: 'descuento'|'cuotas', cuotas: N}
+var seleccion = null;
 var contadores = {};
+var deudorNombre = '';
+var deudorDNI = '';
 
 function fmt(n) { return '$' + Math.round(n).toLocaleString('es-AR'); }
 
@@ -261,6 +272,8 @@ function buscarDNI() {
       var partes = String(data[0].Nombre).trim().split(' ');
       var nombre = partes[partes.length-1];
       nombre = nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase();
+      deudorNombre = nombre;
+      deudorDNI = dni;
       document.getElementById('saludo').textContent = 'Hola ' + nombre;
       renderDeudas();
       document.getElementById('result-view').classList.remove('hidden');
@@ -275,45 +288,32 @@ function buscarDNI() {
 function renderDeudas() {
   var container = document.getElementById('deudas-container');
   container.innerHTML = '';
-
   todasDeudas.forEach(function(deuda, idx) {
     var esDescuento = deuda.Tipo_Oferta === 'DESCUENTO';
     var deudaTotal = Number(deuda.Deuda_Total) || 0;
     var cancelacion = Number(deuda.Monto_Cancelacion) || 0;
     var ahorro = deudaTotal - cancelacion;
     var pct = Number(deuda.Descuento_Pct) || Math.round((1 - cancelacion/deudaTotal)*100);
-    var cuotasOpciones = esDescuento ? [3,6,9,12] : [6];
+    var cuotasOpciones = esDescuento ? [3,6,9,12] : [3,6];
+    var gridClass = esDescuento ? 'cuotas-grid-4' : 'cuotas-grid-2';
 
     var wrap = document.createElement('div');
     wrap.className = 'deuda-wrap';
-
-    // Header con banco
     var header = '<div class="deuda-header"><div class="deuda-banco">' + (deuda.Banco || '') + '</div></div>';
-
-    // Opcion 1: Cancelacion
     var op1 = '<div class="opcion" id="opcion-' + idx + '-descuento" onclick="elegirOpcion(' + idx + ',\'descuento\')">';
     op1 += '<span class="opcion-radio" id="radio-' + idx + '-descuento"></span>';
     op1 += '<span class="opcion-titulo">Cancelación ' + (esDescuento ? 'con descuento' : 'pagando el capital') + '</span>';
-    if (esDescuento && pct > 0) op1 += '<span class="badge-off">' + pct + '% OFF</span>';
+    if (pct > 0) op1 += '<span class="badge-off">' + pct + '% OFF</span>';
     op1 += '<div class="opcion-monto">' + fmt(cancelacion) + '</div>';
     op1 += '<div class="opcion-sub">Pago único — vence ' + formatFecha(deuda.Vencimiento_Oferta) + '</div>';
-    if (esDescuento) {
-      op1 += '<div class="row-montos" style="margin-top:8px;">';
-      op1 += '<div class="monto-antes">Antes: ' + fmt(deudaTotal) + '</div>';
-      op1 += '<div class="monto-ahorro">Ahorrás: ' + fmt(ahorro) + '</div>';
-      op1 += '</div>';
-    } else {
-      op1 += '<div class="row-montos" style="margin-top:8px;">';
-      op1 += '<div class="monto-antes">Deuda total: ' + fmt(deudaTotal) + '</div>';
-      op1 += '<div class="monto-ahorro">Ahorrás: ' + fmt(ahorro) + '</div>';
-      op1 += '</div>';
-    }
+    op1 += '<div class="row-montos" style="margin-top:8px;">';
+    op1 += '<div class="monto-antes">' + (esDescuento ? 'Antes: ' : 'Deuda total: ') + fmt(deudaTotal) + '</div>';
+    op1 += '<div class="monto-ahorro">Ahorrás: ' + fmt(ahorro) + '</div>';
+    op1 += '</div>';
     op1 += '<div class="contador-wrap"><div class="contador-label">La oferta termina en:</div>';
     op1 += '<div class="contador" id="contador-' + idx + '">--:--:--</div></div>';
     op1 += '</div>';
 
-    // Opcion 2: Cuotas
-    var gridClass = cuotasOpciones.length > 1 ? 'cuotas-grid' : 'cuotas-grid-1';
     var botonesHtml = cuotasOpciones.map(function(c) {
       return '<button class="cuota-btn" id="cuotabtn-' + idx + '-' + c + '" onclick="event.stopPropagation();elegirCuotas(' + idx + ',' + c + ')">' + c + '</button>';
     }).join('');
@@ -335,18 +335,10 @@ function renderDeudas() {
 }
 
 function elegirOpcion(idx, tipo) {
-  // Deselect all
-  document.querySelectorAll('.opcion').forEach(function(el) {
-    el.classList.remove('selected');
-  });
-  document.querySelectorAll('.cuotas-selector').forEach(function(el) {
-    el.style.display = 'none';
-  });
-
-  // Select this one
+  document.querySelectorAll('.opcion').forEach(function(el) { el.classList.remove('selected'); });
+  document.querySelectorAll('.cuotas-selector').forEach(function(el) { el.style.display = 'none'; });
   var opEl = document.getElementById('opcion-' + idx + '-' + tipo);
   if (opEl) opEl.classList.add('selected');
-
   if (tipo === 'cuotas') {
     var selector = document.getElementById('cuotas-selector-' + idx);
     if (selector) selector.style.display = 'block';
@@ -361,19 +353,14 @@ function elegirOpcion(idx, tipo) {
 function elegirCuotas(idx, n) {
   var deuda = todasDeudas[idx];
   seleccion = { deudaIdx: idx, tipo: 'cuotas', cuotas: n };
-
-  document.querySelectorAll('[id^="cuotabtn-' + idx + '-"]').forEach(function(b) {
-    b.classList.remove('selected');
-  });
+  document.querySelectorAll('[id^="cuotabtn-' + idx + '-"]').forEach(function(b) { b.classList.remove('selected'); });
   var btn = document.getElementById('cuotabtn-' + idx + '-' + n);
   if (btn) btn.classList.add('selected');
-
   var cuotaMonto = Number(deuda.Deuda_Total) / n;
   var resEl = document.getElementById('cuota-resultado-' + idx);
   var subEl = document.getElementById('cuota-sub-' + idx);
   if (resEl) resEl.textContent = fmt(cuotaMonto) + ' x ' + n;
   if (subEl) subEl.textContent = 'cuotas — total ' + fmt(deuda.Deuda_Total);
-
   document.getElementById('btn-confirmar').style.display = 'block';
 }
 
@@ -405,10 +392,78 @@ function mostrarDatosPago() {
     html += '</div>';
   }
   html += '<button class="btn-primary" onclick="confirmarPlan()" style="margin-top:8px;">Confirmar pago</button>';
-  html += '<button class="btn-volver" onclick="document.getElementById(\'pago-view\').classList.add(\'hidden\');document.getElementById(\'result-view\').classList.remove(\'hidden\');">Volver</button>';
+  html += '<button class="btn-volver" onclick="volverAResultado()">Volver</button>';
   document.getElementById('pago-contenido').innerHTML = html;
   document.getElementById('result-view').classList.add('hidden');
   document.getElementById('pago-view').classList.remove('hidden');
+}
+
+function mostrarYaPague() {
+  // Set today as default date
+  var hoy = new Date();
+  var yyyy = hoy.getFullYear();
+  var mm = ('0'+(hoy.getMonth()+1)).slice(-2);
+  var dd = ('0'+hoy.getDate()).slice(-2);
+  document.getElementById('fecha-pago').value = yyyy+'-'+mm+'-'+dd;
+  document.getElementById('result-view').classList.add('hidden');
+  document.getElementById('ya-pague-view').classList.remove('hidden');
+}
+
+function armarMensajePago() {
+  var fecha = document.getElementById('fecha-pago').value;
+  var importe = document.getElementById('importe-pago').value;
+  var medio = document.getElementById('medio-pago').value;
+  if (!fecha || !importe || !medio) {
+    alert('Por favor completá todos los campos antes de enviar.');
+    return false;
+  }
+  var partesFecha = fecha.split('-');
+  var fechaFormateada = partesFecha[2]+'/'+partesFecha[1]+'/'+partesFecha[0];
+  var msg = 'Hola, ya realicé mi pago.\n\nDNI: ' + deudorDNI + '\nNombre: ' + deudorNombre + '\nFecha: ' + fechaFormateada + '\nImporte: $' + Number(importe).toLocaleString('es-AR') + '\nMedio: ' + medio + '\n\nAdjunto el comprobante.';
+  document.getElementById('btn-enviar-comprobante').href = 'https://wa.me/5491180321001?text=' + encodeURIComponent(msg);
+}
+
+function mostrarPagarDespues() {
+  // Set min date as tomorrow
+  var manana = new Date();
+  manana.setDate(manana.getDate() + 1);
+  var yyyy = manana.getFullYear();
+  var mm = ('0'+(manana.getMonth()+1)).slice(-2);
+  var dd = ('0'+manana.getDate()).slice(-2);
+  document.getElementById('fecha-compromiso').min = yyyy+'-'+mm+'-'+dd;
+  document.getElementById('result-view').classList.add('hidden');
+  document.getElementById('pagar-despues-view').classList.remove('hidden');
+}
+
+function confirmarCompromiso() {
+  var fecha = document.getElementById('fecha-compromiso').value;
+  if (!fecha) { alert('Por favor elegí una fecha.'); return; }
+  var partes = fecha.split('-');
+  var fechaFormateada = partes[2]+'/'+partes[1]+'/'+partes[0];
+  fetch(URL_SCRIPT, {
+    method: 'POST',
+    body: JSON.stringify({
+      pestana: todasDeudas[0].pestana,
+      fila: todasDeudas[0].fila,
+      dni: deudorDNI,
+      nombre: deudorNombre,
+      ofertaElegida: 'compromiso',
+      cuotasElegidas: 0,
+      montoFinal: 0,
+      cbu: todasDeudas[0].CBU_Pago,
+      titular: todasDeudas[0].Titular_Pago,
+      fechaCompromiso: fechaFormateada
+    })
+  }).then(function() {
+    document.getElementById('confirm-titulo').textContent = 'Compromiso registrado';
+    document.getElementById('resumen-confirmado').textContent = 'Registramos que vas a pagar el ' + fechaFormateada + '. Te vamos a contactar para recordarte.';
+    document.getElementById('confirm-pago-box').innerHTML = '';
+    var msg = encodeURIComponent('Hola, me comprometo a pagar el ' + fechaFormateada + '. DNI: ' + deudorDNI);
+    document.getElementById('whatsapp-link').href = 'https://wa.me/5491180321001?text=' + msg;
+    document.getElementById('whatsapp-link').textContent = '&#128172; Avisar por WhatsApp';
+    document.getElementById('pagar-despues-view').classList.add('hidden');
+    document.getElementById('confirm-view').classList.remove('hidden');
+  });
 }
 
 function confirmarPlan() {
@@ -430,6 +485,7 @@ function confirmarPlan() {
       montoFinal: montoFinal, cbu: d.CBU_Pago, titular: d.Titular_Pago
     })
   }).then(function() {
+    document.getElementById('confirm-titulo').textContent = 'Plan confirmado';
     document.getElementById('resumen-confirmado').textContent = resumen;
     var pagoHtml = '<div class="pago-box">';
     pagoHtml += '<div class="pago-label">Para pagar transferí o depositá a:</div>';
@@ -448,6 +504,13 @@ function confirmarPlan() {
   });
 }
 
+function volverAResultado() {
+  document.getElementById('pago-view').classList.add('hidden');
+  document.getElementById('ya-pague-view').classList.add('hidden');
+  document.getElementById('pagar-despues-view').classList.add('hidden');
+  document.getElementById('result-view').classList.remove('hidden');
+}
+
 function volver() {
   Object.keys(contadores).forEach(function(k) { clearInterval(contadores[k]); });
   contadores = {};
@@ -459,6 +522,8 @@ function volver() {
   document.getElementById('result-view').classList.add('hidden');
   document.getElementById('confirm-view').classList.add('hidden');
   document.getElementById('pago-view').classList.add('hidden');
+  document.getElementById('ya-pague-view').classList.add('hidden');
+  document.getElementById('pagar-despues-view').classList.add('hidden');
   document.getElementById('deudas-container').innerHTML = '';
 }
 </script>
